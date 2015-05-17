@@ -9,7 +9,7 @@ try:
 		avg_dist = 0.0
 		GPIO.setup(11, GPIO.OUT)
 		GPIO.output(11,0)
-		for i in range(ping_count):
+		for i in range(int(ping_count)):
 			GPIO.setup(7, GPIO.OUT)
 			GPIO.output(7, 0)
 			time.sleep(0.000002)
