@@ -4,11 +4,11 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 try:
 	ping_count = int(input("Enter the number of times to collect sonar evidence before calculating the distance: ")) or int(5)
+	GPIO.setup(11, GPIO.OUT)
+	GPIO.output(11,0)
 	while True:
 		distance=[]
 		avg_dist = 0.0
-		GPIO.setup(11, GPIO.OUT)
-		GPIO.output(11,0)
 		for i in range(ping_count):
 			GPIO.setup(7, GPIO.OUT)
 			GPIO.output(7, 0)
@@ -27,7 +27,6 @@ try:
 			avg_dist = avg_dist + distance[i]
 		avg_dist=avg_dist/ping_count
 		print ('Distance from obstacle = ',avg_dist)
-#        if (avg_dist >= (prev_dist-.01*prev_dist) and avg_dist<=(prev_dist+.01*prev_dist)) :
 		if (avg_dist <= 10) :
 			GPIO.output(11, 1)
 		else :
