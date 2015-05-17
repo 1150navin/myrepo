@@ -3,8 +3,8 @@ import time
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 try:
-	while True:
-		ping_count = input("Enter the number of times to collect sonar evidence before calculating the distance: ") or 5
+	ping_count = input("Enter the number of times to collect sonar evidence before calculating the distance: ") or 5
+		while True:
 		distance=[]
 		avg_dist = 0.0
 		GPIO.setup(11, GPIO.OUT)
